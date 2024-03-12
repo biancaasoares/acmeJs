@@ -1,25 +1,33 @@
 import { getFilmes, getFilme } from "./filmes.js";
 
-function preencherCards(filemes){
-    const container = document.createElement('div')
+function criarCard(filme){
+    const card = document.createElement('div')
     const titulo = document.createElement('h2')
-    titulo.textContent = filme.nome 
+    titulo.textContent = filme.nome
 
-    container.appendChild(titulo)
-    
+    const valor = document.createElement('button')
+    valorButton.textContent = filme.valor_unitario
+
+    card.appendChild(titulo,valor)
     return card
+}
+
+async function preencherContainer(){
+    const container = document.querySelector('body')
+    const filmes = await getFilmes()
+    
+    filmes.forEach(filme => {
+        const card = criarCard(filme)
+        container.appendChild(card)
+        
+    });
 
 }
 
-function preencherContainer(){
+preencherContainer()
 
-        const container = document.querySelector('body')
-const teste = {
-nome: " 10 coisas que eu odeio em você"
-}
-
-criarCard (teste)
-
-}
+  filme = {
+    
+  }
 
 console.table(await getFilme(1))
